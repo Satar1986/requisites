@@ -2,7 +2,7 @@ package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.model.Requisites;
-import org.example.service.RequisitesService;
+import org.example.service.RequisitesTransaction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/requisites")
 public class RequisitesController {
-    private final RequisitesService requisitesService;
+    private final RequisitesTransaction requisitesService;
 @GetMapping
     public ResponseEntity<List<Requisites>> getRequisites() {
     return new ResponseEntity<>(requisitesService.readAll(), HttpStatus.OK);
