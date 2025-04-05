@@ -24,7 +24,7 @@ public void processRequisites(EventRequisites eventRequisites) {
           requisites.setOgrn(eventRequisites.getOgrn());
           requisites.setRcbic(eventRequisites.getRcbic());
           requisites.setName_company(eventRequisites.getName_company());
-Requisites savedRequisites = requisitesTransaction.savedRequisites(requisites);
+Requisites savedRequisites = requisitesTransaction.savedRequisites(requisites,eventRequisites.getRequisitesId());
 return;
 }
      Requisites requisites1=Requisites.builder().
@@ -40,7 +40,6 @@ return;
              ogrn(eventRequisites.getOgrn()).
              rcbic(eventRequisites.getRcbic()).
              name_company(eventRequisites.getName_company()).build();
-     Requisites savedRequisites=requisitesTransaction.savedRequisites(requisites1);
-
+     Requisites savedRequisites=requisitesTransaction.savedRequisites(requisites1,eventRequisites.getRequisitesId());
 }
 }
