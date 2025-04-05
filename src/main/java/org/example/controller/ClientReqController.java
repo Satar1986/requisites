@@ -1,9 +1,7 @@
 package org.example.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.example.model.Requisites;
+import org.example.model.ClientReq;
 import org.example.service.RequisitesTransaction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +14,15 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/requisites")
-public class RequisitesController {
+@RequestMapping("/client")
+public class ClientReqController {
     private final RequisitesTransaction requisitesTransaction;
-
-@GetMapping
-    public ResponseEntity<List<Requisites>> getRequisites() {
-    return new ResponseEntity<>(requisitesTransaction.readAll(), HttpStatus.OK);
-}
-
-@GetMapping("/{id}")
-public ResponseEntity<Requisites> getRequisitesById(@PathVariable String id) {
-    return new ResponseEntity<>(requisitesTransaction.readById(id), HttpStatus.OK);
-}
+    @GetMapping
+    public ResponseEntity<List<ClientReq>> getClientReq() {
+        return new ResponseEntity<>(requisitesTransaction.readAllClient(), HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<ClientReq> getClientReqById(@PathVariable Integer id) {
+        return new ResponseEntity<>(requisitesTransaction.readClientReqById(id), HttpStatus.OK);
+    }
 }
